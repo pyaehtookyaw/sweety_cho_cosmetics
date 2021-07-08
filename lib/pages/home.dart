@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
@@ -24,6 +25,10 @@ class HomePage extends InAppBrowser {
 
   @override
   void onProgressChanged(progress) {
+    if (progress < 100) {
+      ShouldOverrideUrlLoadingAction();
+    }
+
     print("Progress: $progress");
   }
 
@@ -40,4 +45,4 @@ class HomePage extends InAppBrowser {
   // }
 }
 
-// class ShouldOverrideUrlLoadingAction {}
+class ShouldOverrideUrlLoadingAction {}

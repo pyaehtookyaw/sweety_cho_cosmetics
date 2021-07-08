@@ -4,16 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:sweety_cho/pages/splash_screen.dart';
+import 'package:sweety_cho/pages/sweety_cho.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isAndroid) {
     await AndroidInAppWebViewController.setWebContentsDebuggingEnabled(true);
   }
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.white,
-    //statusBarIconBrightness: Brightness.dark,
-  ));
+  // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  //   statusBarColor: Colors.transparent,
+  //   statusBarIconBrightness: Brightness.light,
+  // ));
+
+  SystemChrome.setEnabledSystemUIOverlays([]);
 
   runApp(MyApp());
 }
@@ -28,7 +31,8 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.white,
         accentColor: Colors.pink[300],
       ),
-      home: SplashScreen(),
+      home: SweetyChoPage(),
+      //SplashScreen(),
       //  ChangeNotifierProvider(
       //   builder: (context) => homeViewModel,
       //   child: HomeNewPage(),

@@ -3,6 +3,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:sweety_cho/pages/home.dart';
 
 class HomeNewPage extends StatefulWidget {
+  final HomePage inAppBrowser = HomePage();
   HomeNewPage({Key? key}) : super(key: key);
 
   @override
@@ -10,15 +11,15 @@ class HomeNewPage extends StatefulWidget {
 }
 
 class _HomeNewPageState extends State<HomeNewPage> {
-  final HomePage inAppBrowser = HomePage();
   String _url = "https://sweetychocosmetics.com/";
 
   var options = InAppBrowserClassOptions(
       crossPlatform: InAppBrowserOptions(
-          //hidden: true,
-          hideToolbarTop: true,
-          toolbarTopBackgroundColor: Colors.white,
-          hideProgressBar: true),
+        //hidden: true,
+        hideToolbarTop: true,
+        toolbarTopBackgroundColor: Colors.white,
+        //hideProgressBar: true,
+      ),
       inAppWebViewGroupOptions: InAppWebViewGroupOptions(
         crossPlatform: InAppWebViewOptions(
           useShouldOverrideUrlLoading: true,
@@ -34,17 +35,17 @@ class _HomeNewPageState extends State<HomeNewPage> {
   void initState() {
     super.initState();
 
-    inAppBrowser.openUrlRequest(
+    widget.inAppBrowser.openUrlRequest(
         urlRequest: URLRequest(url: Uri.parse(_url)), options: options);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        brightness: Brightness.light,
-        backgroundColor: Colors.white,
-      ),
+      // appBar: AppBar(
+      //   brightness: Brightness.light,
+      //   backgroundColor: Colors.white,
+      // ),
       body: Center(),
     );
   }
